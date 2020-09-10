@@ -19,5 +19,5 @@ func main() {
 	gameService := gameService.New(database)
 	gameController.New(api, gameService)
 
-	log.Fatal(http.ListenAndServe(":89", router))
+	log.Fatal(http.ListenAndServe(":388", router))
 }

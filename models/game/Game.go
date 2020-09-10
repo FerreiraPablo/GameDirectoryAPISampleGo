@@ -9,7 +9,7 @@ Pablo Ferreira 20200910
 package game
 
 type Game struct {
-	Id          int `gorm:"primaryKey"`
+	Id          int `gorm:"primaryKey;autoIncrement;not null"`
 	Name        string
 	Description string
 	Genre       string

@@ -47,7 +47,32 @@ func (controller *GameController) GetById(writer http.ResponseWriter, request *h
 		responseHelper.New(writer).BadRequest()
 		return
 	}
-	responseHelper.New(writer).Ok(controller.service.GetById(id))
+
+	game := controller.service.GetById(id)
+	if game.Id == 0 {
+		responseHelper.New(writer).NotFound()
+		return
+	}
+
+	responseHelper.New(writer).Ok(game)
+}
+
+func (controller *GameController) DeleteById(writer http.ResponseWriter, request *http.Request) {
+	parameters := mux.Vars(request)
+	id, error := strconv.Atoi(parameters["Id"])
+	if error != nil {
+		responseHelper.New(writer).BadRequest()
+		return
+	}
+
+	game := controller.service.GetById(id)
+	if game.Id == 0 {
+		responseHelper.New(writer).NotFound()
+		return
+	}
+
+	controller.service.DeleteById(id)
+	responseHelper.New(writer).NoContent()
 }
 
 func (controller *GameController) Create(writer http.ResponseWriter, request *http.Request) {

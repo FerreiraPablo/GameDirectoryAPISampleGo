@@ -38,6 +38,10 @@ func (gameService *GameService) GetById(id int) game.Game {
 	return game
 }
 
+func (gameService *GameService) DeleteById(id int) {
+	gameService.database.Delete(&game.Game{}, id)
+}
+
 func (gameService *GameService) All() []game.Game {
 	var games []game.Game
 	gameService.database.Find(&games)

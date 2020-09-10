@@ -56,6 +56,10 @@ func (responseHelper *ResponseHelper) BadRequest() {
 	responseHelper.writer.WriteHeader(http.StatusBadRequest)
 }
 
+func (responseHelper *ResponseHelper) NoContent() {
+	responseHelper.writer.WriteHeader(http.StatusNoContent)
+}
+
 func (responseHelper *ResponseHelper) Created(response interface{}) {
 	data := responseHelper.PrepareResponse(response)
 	if data == nil {

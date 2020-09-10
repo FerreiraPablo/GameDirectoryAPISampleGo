@@ -13,6 +13,6 @@ func New(dialect gorm.Dialector) *gorm.DB {
 		return nil
 	}
 
-	database.Debug().AutoMigrate(&game.Game{})
+	database.AutoMigrate(&game.Game{})
 	return database
 }

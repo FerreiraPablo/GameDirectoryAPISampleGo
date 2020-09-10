@@ -60,3 +60,4 @@ $RECYCLE.BIN/
 # Local History for Visual Studio Code
 .history/
 game.db-journal
+contexts/.DS_Store

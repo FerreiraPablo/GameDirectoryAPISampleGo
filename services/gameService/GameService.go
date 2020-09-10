@@ -27,7 +27,8 @@ func New(database *gorm.DB) GameService {
 
 // Metodos
 func (gameService *GameService) Create(game game.Game) game.Game {
-	gameService.database.Create(game)
+	gameService.database.Create(&game)
+	gameService.database.Last(&game)
 	return game
 }
 
